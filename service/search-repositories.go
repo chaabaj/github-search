@@ -103,25 +103,25 @@ func resolveRepositoryLanguage(repositories []datas.Repository) ([]datas.Reposit
 // Search GitHub repositories by name
 // It return the repositories sorted by size
 func SearchRepositories(name string) ([]datas.Repository, error) {
-     var result searchResult
+    var result searchResult
 
-     params := map[string]string {
-     	"q" : name + " in:name",
-	    "type" : "repositories",
+    params := map[string]string {
+        "q" : name + " in:name",
+        "type" : "repositories",
         "page" : "1",
         "per_page" : "100",
         "sort" : "stars",
         "order" : "desc",
-     }
-     body, err := githubApi.Get("search/repositories", params)
-     if err != nil {
-     	return nil, err
-     }
-     if err := json.Unmarshal(body, &result); err != nil {
-     	return nil, err
-     }
-     if len(result.Items) > 0 {
-         return resolveRepositoryLanguage(result.Items)
-     }
-     return nil, errors.New("No Results")
+    }
+    body, err := githubApi.Get("search/repositories", params)
+    if err != nil {
+        return nil, err
+    }
+    if err := json.Unmarshal(body, &result); err != nil {
+        return nil, err
+    }
+    if len(result.Items) > 0 {
+        return resolveRepositoryLanguage(result.Items)
+    }
+    return nil, errors.New("No Results")
 }
