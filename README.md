@@ -11,5 +11,3 @@ Usage :
 ```
 
 After go to your browser at http://localhost:8080 and search what you want :)
-
-Documentation is availa

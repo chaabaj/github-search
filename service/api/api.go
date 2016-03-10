@@ -65,7 +65,6 @@ func (api *Api) Get(name string, params map[string]string) ([]byte, error) {
        return nil, err
     }
     body, err := ioutil.ReadAll(resp.Body)
-    utils.Log.Println("Received response")
     if resp.StatusCode >= 400 {
         utils.Log.Println(string(body))
         return nil, errors.New(http.StatusText(resp.StatusCode))
