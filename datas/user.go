@@ -24,6 +24,7 @@ SOFTWARE.
 
 package datas
 
+// This structure represent a Github user
 type User struct {
     Login string `json:"login"`
     ID int `json:"id"`

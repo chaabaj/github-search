@@ -26,6 +26,7 @@ package datas
 
 import "time"
 
+// This structure represent a Github Repository information
 type Repository struct {
     ID int `json:"id"`
     Name string `json:"name"`
