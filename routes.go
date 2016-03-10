@@ -4,8 +4,8 @@ import (
        "fmt"
        "net/http"
        "html/template"
-       "github.com/jalalc-github-search/utils"
-       "github.com/jalalc-github-search/service"
+       "github.com/chaabaj/github-search/utils"
+       "github.com/chaabaj/github-search/service"
 )
 
 func baseRouteHandler(res http.ResponseWriter, req *http.Request) {

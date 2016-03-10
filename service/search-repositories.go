@@ -4,8 +4,8 @@ import (
        "fmt"
        "encoding/json"
        "sort"
-       "github.com/jalalc-github-search/service/api"
-       "github.com/jalalc-github-search/datas"
+       "github.com/chaabaj/github-search/service/api"
+       "github.com/chaabaj/github-search/datas"
 )
 
 type searchResult struct {

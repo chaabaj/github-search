@@ -2,7 +2,7 @@ package main
 
 import (
        "net/http"
-       "github.com/jalalc-github-search/utils"
+       "github.com/chaabaj/github-search/utils"
 )
 
 func main() {

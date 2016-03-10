@@ -3,7 +3,7 @@ package api
 import (
        "net/http"
        "io/ioutil"
-       "github.com/jalalc-github-search/utils"
+       "github.com/chaabaj/github-search/utils"
        "errors"
 )
 
