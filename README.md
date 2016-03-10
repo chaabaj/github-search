@@ -6,7 +6,8 @@ This server application use the GitHub API for searching public repositories and
 Usage :
 
 ```bash
-./jalalc-github-search
+ export GITHUB_AUTH_TOKEN=YOUR_TOKEN
+./github-search
 ```
 
 After you can go to localhost:8080 and search public repositories

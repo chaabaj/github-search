@@ -32,18 +32,20 @@ func (api *Api) Get(name string, params map[string]string) ([]byte, error) {
     for key, val := range params {
     	query.Add(key, val)
     }
+    utils.Log.Println(api.authToken)
+    query.Add("access_token", api.authToken)
     req.URL.RawQuery = query.Encode()
-    req.Header.Add("Authorization", api.authToken)
     utils.Log.Println("Sending request at : ", req.URL.String())
     resp, err := client.Do(req)
+    defer resp.Body.Close()
     if err != nil {
        return nil, err
     }
+    body, err := ioutil.ReadAll(resp.Body)
     if resp.StatusCode >= 400 {
+        utils.Log.Println(string(body))
         return nil, errors.New(http.StatusText(resp.StatusCode))
     }
-    defer resp.Body.Close()
-    body, err := ioutil.ReadAll(resp.Body)
     if err != nil {
        return nil, err
     }
