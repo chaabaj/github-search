@@ -33,7 +33,7 @@ func (api *Api) Get(name string, params map[string]string) ([]byte, error) {
     	query.Add(key, val)
     }
     req.URL.RawQuery = query.Encode()
-    req.Header.Add("Authorization", "token " + api.authToken)
+    req.Header.Add("Authorization", api.authToken)
     utils.Log.Println("Sending request at : ", req.URL.String())
     resp, err := client.Do(req)
     if err != nil {

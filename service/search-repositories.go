@@ -16,7 +16,7 @@ type searchResult struct {
 
 // github api definition with a valid auth token
 // It provide only access to public repository
-var githubApi = api.New("https://api.github.com", "da7f8a6aee3763253a95e366300e5b4054ecfe5b")
+var githubApi = api.New("https://api.github.com", "token da7f8a6aee3763253a95e366300e5b4054ecfe5b")
 
 // Try to get the languages used in the repository
 func getRepositoryLanguages(repo *datas.Repository) (map[string]interface{}, error) {
