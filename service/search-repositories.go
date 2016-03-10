@@ -27,6 +27,7 @@ package service
 import (
        "fmt"
        "os"
+       "errors"
        "encoding/json"
        "sort"
        "github.com/chaabaj/github-search/service/api"
@@ -119,5 +120,8 @@ func SearchRepositories(name string) ([]datas.Repository, error) {
      if err := json.Unmarshal(body, &result); err != nil {
      	return nil, err
      }
-     return resolveRepositoryLanguage(result.Items)
+     if len(result.Items) > 0 {
+         return resolveRepositoryLanguage(result.Items)
+     }
+     return nil, errors.New("No Results")
 }

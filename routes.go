@@ -26,14 +26,11 @@ func searchRepositoriesRouteHandler(res http.ResponseWriter, req *http.Request) 
         repositories, err := service.SearchRepositories(req.FormValue("search"))
         if err != nil {
             utils.Log.Println("Cannot retreive data : " + err.Error())
-            fmt.Fprintf(res, err.Error())
+            tpl, _ := template.ParseFiles("templates/error.html")
+            tpl.Execute(res, err.Error())
         } else {
-            tpl, err := template.ParseFiles("templates/search.html")
-            if err != nil {
-                http.Error(res, "Page not found", 404)
-            } else {
-                tpl.Execute(res, repositories)
-            }
+            tpl, _ := template.ParseFiles("templates/search.html")
+            tpl.Execute(res, repositories)
         }
     }
 }
