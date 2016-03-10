@@ -1,4 +1,4 @@
-# jalalc-github-search
+# github-search
 Github repository search API with statistics
 
 This server application use the GitHub API for searching public repositories and make some basics statistics
@@ -10,4 +10,6 @@ Usage :
 ./github-search
 ```
 
-After you can go to localhost:8080 and search public repositories
+After go to your browser at http://localhost:8080 and search what you want :)
+
+Documentation is availa
