@@ -1,0 +1,55 @@
+body {
+    width : 100%;
+    margin-top : 10px;
+    text-align : center;
+}
+
+#lang-stats-global {
+    margin-bottom : 15px;
+}
+
+.lang-stats-graph {
+    margin-top : 10px;
+}
+
+.repository {
+    margin-left : 10%;
+}
+
+.panel-title a {
+    color : #ECF0F1 !important;
+    font-size : 1.3em;
+    font-weight:bold;
+}
+
+.panel-title a:hover {
+    color : white !important;
+    margin-top : 5px;
+}
+
+.repositorydetail {
+    margin-top : 10px;
+    width : 50%;
+    text-align : center;
+}
+
+.panel-body {
+    background-color: #ECF0F1;
+}
+
+ul {
+    list-style-type : none;
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+canvas {
+    transition: all .2s ease-in-out;
+}
+
+canvas:hover {
+    transform: scale(1.1);
+}

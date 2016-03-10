@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Github repositories</title>
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.2.2/css/flat-ui.css">
+        <link rel="stylesheet" type="text/css" href="assets/app.css" />
+    </head>
+  <body>
+
+    <img src="assets/github-logo.jpg" alt="Github logo" />
+    <h3> Search GitHub repositories</h3>
+    <div class="row-fluid">
+        <form action="/search" class=" col-md-4 col-md-offset-4" method="GET">
+          <div class="form-group">
+              <div class="input-group">
+                    <input class="form-control" type="search" name="search" placeholder="Search">
+                    <span class="input-group-btn">
+                      <button type="submit" class="btn"><span class="fui-search"></span></button>
+                    </span>
+              </div>
+          </div>
+        </form>
+    </div>
+  </body>
+</html>

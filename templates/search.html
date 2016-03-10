@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Github repositories</title>
+      <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.2.2/css/flat-ui.css">
+      <link rel="stylesheet" type="text/css" href="assets/app.css" />
+  </head>
+  <body>
+      <div class="row-fluid">
+          <div class="col-md-6 col-md-offset-3">
+              <h3>Global languages statistics</h3>
+              <canvas width="400" height="400" id="lang-stats-global">
+              </canvas>
+          </div>
+         {{ range . }}
+         <div class="repository-detail col-md-6 col-md-offset-3">
+            <div class="palette palette-peter-river panel-title">
+                <a href="{{ .CloneURL }}">{{ .Name }}</a>
+            </div>
+
+            <div class="row-fluid panel-body">
+                <div class="col-md-6">
+                    <h4>Project informations</h4>
+                    <ul>
+                        <li> Created at : {{ .CreatedAt.Format "2 January at 3:04pm" }}</li>
+                        <li> Updated at : {{ .UpdatedAt.Format "2 January at 3:04pm" }}</li>
+                        <li> Owner : {{ .Owner.Login }}</li>
+                        <li> Size : {{ .Size }} </li>
+                        <li> Fork count : {{ .ForksCount }} </li>
+                        <li> Homepage : <a href="{{ .Homepage }}">{{ .Homepage }}</a> </li>
+                        <li> Open issues : {{ .OpenIssues }} </li>
+                        <li> Watchers : {{ .Watchers }} </li>
+                        <li> Description : {{ .Description }}</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h4 class="text-center">Languages Used</h4>
+                    <canvas width="400" height="400" class="lang-stats-graph">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+        <br />
+        {{ end }}
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+        <script src="assets/stats.js"></script>
+        <script>
+            var repositories = {{ . }}
+
+            loadLanguageStats(repositories);
+            loadGlobalLanguageStats(repositories);
+        </script>
+  </body>
+</html>
