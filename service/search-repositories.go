@@ -9,14 +9,14 @@ import (
        "github.com/chaabaj/github-search/datas"
 )
 
+// Represent data structure GitHub API Search response
 type searchResult struct {
 	TotalCount int `json:"total_count"`
 	IncompleteResults bool `json:"incomplete_results"`
 	Items []datas.Repository `json:"items"`
 }
 
-// github api definition with a valid auth token
-// It provide only access to public repository
+// GitHub API definition with a authorization token
 var githubApi = api.New("https://api.github.com", os.Getenv("GITHUB_AUTH_TOKEN"))
 
 // Try to get the languages used in the repository
@@ -40,6 +40,9 @@ func resolveRepositoryLanguage(repositories []datas.Repository) ([]datas.Reposit
     nbRepositories:= len(repositories)
     chunkSize := nbRepositories / 10
 
+    // Dipatch nbRepositories calls to block of chunkSize
+    // 1 go routine handle chunkSize of calls to getRepositoryLanguages
+    // Errors are propageted using the channel reqChan
     for i := 0; i < nbRepositories; i += chunkSize {
         go func(start int, end int) {
             for j := start; j < end && j < nbRepositories; j++ {
@@ -72,7 +75,7 @@ func resolveRepositoryLanguage(repositories []datas.Repository) ([]datas.Reposit
     }
 }
 
-// Search repositories by name
+// Search GitHub repositories by name
 // It return the repositories sorted by size
 func SearchRepositories(name string) ([]datas.Repository, error) {
      var result searchResult
